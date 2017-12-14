@@ -1,0 +1,40 @@
+<!Doctype html>
+<html>
+<style>
+.vertical-menu {
+    width: 200px;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+</style>
+<body>
+    
+<form align="center">
+<input type="text">
+<button>Buscar</button>
+</form>
+<form align="right"><button>LogOut</button></form>
+    
+<h1>Menu citas</h1>
+<div class="vertical-menu">
+  <a href="#">Mis citas</a>
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a><br><br>
+<!--Businessman-->
+<p>Control para empresarios:</p>
+  <a href="#">Control de citas</a>
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+</div>
+</body>
+</html>
