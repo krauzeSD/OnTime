@@ -19,11 +19,12 @@ CREATE TABLE Business
 );
 CREATE TABLE Establishments
 (
+    EstablishmentID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     BusinessID VARCHAR(15) NOT NULL,    
     Location VARCHAR(50) NOT NULL,
     
     FOREIGN KEY (BusinessID) REFERENCES Business (BusinessID),
-    PRIMARY KEY (BusinessID, Location)  
+    PRIMARY KEY (EstablishmentID)  
 );
 CREATE TABLE Individuals
 (
