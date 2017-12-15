@@ -1,0 +1,11 @@
+1.- Working:
+      Before writing any code, it's mandatory to write down what we want to do and how are we going to do it, 
+      always in plain words, understandable for everybody.
+      
+      Every class, method or function must have an explanatory comment above its definition.
+      
+
+2.- Requirements syntax:
+      [] = Optional
+      (text) = The type of an input element. In this case, text
+
