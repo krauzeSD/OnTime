@@ -12,8 +12,8 @@ Tables:
   Business
     BusinessID varchar(15) not null,
     BusinessName varchar(50) not null,
-    Email varchar(50) not null,
-    Telephone varchar (15) not null,
+    Email varchar(50) null,
+    Telephone varchar (15) null,
     Sector varchar (50) not null
     Primary key (BusinessID),
     Unique (Email),
