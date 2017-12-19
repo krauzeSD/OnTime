@@ -1,0 +1,58 @@
+/* TAGS */
+a{
+    color: black;
+    text-decoration: none;
+}
+body{
+    background-color: azure;
+    margin: 0;
+}
+button{
+    border-radius: 4px;
+    font-size: 20px;
+    font-family: serif;
+    height: 4%;
+    width: 40%;
+}
+header{
+    background-color: lightblue;
+    width: 100%;
+}
+p1{
+    font-size: 35px;
+}
+
+/* ID'S */
+
+/* CLASSES */
+
+.about{
+
+    float: left;
+    font-size: 25px;
+    margin: 10px;
+    padding-left: 2%;
+    text-align: center;
+    width: 45%;
+}
+
+.inputlogin{
+    font-size: 20px;
+    height: 4%;
+    width: 70%;   
+}
+
+.login{
+
+    background-color: lightblue;
+    border-radius: 7px;
+    box-sizing: border-box;
+    float: right;
+    font-size: 25px;
+    margin: 10px;
+    padding-right: 2%;  
+    padding-bottom: 2%;
+    text-align: center;
+    width: 45%;
+    
+}
