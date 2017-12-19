@@ -4,7 +4,7 @@
   
   By Sant Josep Obrer 
 
-### Working Team
+## Working Team
 
   **Project Manager:** *[Álvaro Tihanyi](https://github.com/krauzeSD)*
   
@@ -15,7 +15,7 @@
   
   All current members belong to the 2nd year of Computer Systems Management in Network (HNC)
   
-### Status
+## Status
   
    In development.
    
