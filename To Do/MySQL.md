@@ -20,5 +20,7 @@
   - [ ] Update an individual (user)
   - [ ] Delete an individual (user)
   - [ ] Show business
-  **_Fallo por el motor de base de datos: Falta de conocimientos en InnoDB / MySQL_**
+  
+  
+**_Fallo por el motor de base de datos: Falta de conocimientos en InnoDB / MySQL_**
   
