@@ -4,5 +4,5 @@ We decided to divide our group of four people into two groups of two people. Dep
 two groups will be different.
 
 ### First Division - Basic HTML Interface and Basic SQL
-  * Group A: [Javier Marín](@javimarinbergas), [Álvaro Tihanyi](@krauzeSD)
-  * Group B: [Pere Albertí](@PereAlberti), [Enric González](@Enric96)
+  * Group A: [Javier Marín](https://github.com/javiermarinbergas), [Álvaro Tihanyi](https://github.com/krauzeSD)
+  * Group B: [Pere Albertí](https://github.com/PereAlberti), [Enric González](https://github.com/Enric96)
