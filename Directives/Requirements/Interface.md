@@ -2,7 +2,7 @@
   #### 1.1 Logo
   #### 1.2 Slogan
   
-2. Entry Screen
+## 2. Entry Screen
   #### 2.1 About
   #### 2.2 Login Form
     ##### 2.2.1 Email (text)
@@ -10,12 +10,12 @@
     ##### 2.2.3 Submit
   #### 2.3 Register Button
 
-3. Transition 
+## 3. Transition 
   #### 3.1 From Entry to Register
     ##### 3.1.1 Clean Screen
     ##### 3.1.2 Individual or business
  
-4. Main Screen
+## 4. Main Screen
   #### 4.1 Additions to header
     ##### 4.1.1 Search Form
       ###### 4.1.1.1 Search Bar (text)
