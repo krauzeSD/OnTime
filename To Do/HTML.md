@@ -1,7 +1,7 @@
 ## 14/12/2017
-  - [ ] Entry Screen (NV-NM)
-  - [ ] Login Form (NV-NM)
-  - [ ] Register Form (NV-NM)
-  - [ ] Main Screen (NV-NM)
+  - [x] Entry Screen
+  - [x] Login Form
+  - [x] Register Form
+  - [ ] Main Screen
 ## 19/12/2017
   - [ ] Finish Entry Screen, Login Form and Register Form
