@@ -6,10 +6,10 @@ the most ot of our time. Because of this, we have written a protocol that we mus
 This protocol might be changed in the future if the team believe to do so.
 
 ## 1.- Working:
-      Before writing any code, it's **_mandatory_** to write down **_what_** we want to do and **_how_** are we going to do it, 
-      always in plain words, understandable for everybody.
+Before writing any code, it's **_mandatory_** to write down **_what_** we want to do and **_how_** are we going to do it, 
+always in plain words, understandable for everybody.
       
-      Every class, method or function must have an **_explanatory comment_** above its definition.
+Every class, method or function must have an **_explanatory comment_** above its definition.
 
 ## 2.- Syntax:
       (input->text) = Clarifies features of elements. In this case for example the element will be an input of type text.
