@@ -4,7 +4,7 @@
   
 19/12/2017
 #### Constraints
-**_ Fallo por el motor de base de datos: NO admite constraints _**
+**_Fallo por el motor de base de datos: NO admite constraints_**
   - [ ] Individuals.email (_text_@_text_)
   - [ ] Individuals.telephone (\[0-9])
   - [ ] Business.businessID (\[A-Z]\[0-9])
@@ -20,5 +20,5 @@
   - [ ] Update an individual (user)
   - [ ] Delete an individual (user)
   - [ ] Show business
-  **_ Fallo por el motor de base de datos: Falta de conocimientos en InnoDB / MySQL _**
+  **_Fallo por el motor de base de datos: Falta de conocimientos en InnoDB / MySQL_**
   
