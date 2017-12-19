@@ -4,7 +4,7 @@
   
 19/12/2017
 #### Constraints
-**_Fallo por el motor de base de datos: NO admite constraints_**
+**_Failed because DB motor does not admit constraints_**
   - [ ] Individuals.email (_text_@_text_)
   - [ ] Individuals.telephone (\[0-9])
   - [ ] Business.businessID (\[A-Z]\[0-9])
@@ -22,5 +22,5 @@
   - [ ] Show business
   
   
-**_Fallo por el motor de base de datos: Falta de conocimientos en InnoDB / MySQL_**
+**_Failed because we lack knowledge using MySQL_**
   
