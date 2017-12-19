@@ -3,6 +3,6 @@
   - [x] Basic Login Form (NM)
   - [x] Basic Register Form (NM)
 ## 19/12/2017
-  - [ ] Finish Entry Screen
-  - [ ] Login Form 
-  - [ ] Register Form
+  - [x] Finish Entry Screen
+  - [x] Login Form 
+  - [x] Register Form
