@@ -13,7 +13,7 @@
   * _[Enric González](https://github.com/Enric96)_, 
   * _[Javier Marín](https://github.com/javimarinbergas)_
   
-  All current members belong to the 2nd year of Computer Systems Management in Network
+  All current members belong to the 2nd year of Computer Systems Management in Network (HNC)
   
 ## Status
   
