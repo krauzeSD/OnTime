@@ -13,8 +13,24 @@ Every class, method or function must have an **_explanatory comment_** above its
 
 ## 2.- Syntax:
 * (input->text) = Clarifies features of elements. In this case for example the element will be an input of type text.
-* N = Not (if it's the only letter then the element does not exist)
+* N = Not
 * M = In Master branch
 
 ## 3.- Task Lists:
 In the "To Do" section there are tasks lists based on what the team decides as its objetive for the next day of work. These lists must always contain a checkbox indicating if the desired work has been completed; **_in the event of an unaccomplished objetive, it is mandatory to write down the reason and circumstances behind it_**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                           The Project Manager
