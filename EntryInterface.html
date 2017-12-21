@@ -1,4 +1,7 @@
 <html>
+    <head>
+    <link rel="stylesheet" href="Styles.css" type="text/css">
+    </head>
 <body>
     <script>
         function mostrar() {
@@ -7,37 +10,40 @@
         }
         
     </script>
-    
-<section>
-<form>
-<center> 
+    <header>
+        <a href="InterfazEntrada.html"></a><img name="logo" src="" width="" height=""><h1>Instant appointments</h1>
+    </header>
+<div class="about">    
+<h1>ABOUT US</h1>
+<p>Text about us</p>
+    </div>
+<div class="login">
+   <form> 
    <h1>INICIAR SESIÓN</h1>
    <div> 
        <p1>Email </p1><br>
-       <input type="text" placeholder="Introducir Email">
+       <input class="inputlogin" type="text">
    </div><br>
 
    <div> 
        <p1>Password </p1><br>
-       <input type="password" placeholder="Password">
+       <input class="inputlogin" type="password">
    </div><br>                  
                            
    <div> 
        <button type="submit"><span><a href="Ontime/Principal.html">LOGIN</a></span></button>
    </div>
-</center>  
+  
    
 </form>
-    <center>
     <div>
-        <button type="submit" onclick="javascript:mostrar();"><span>REGISTER</span></button><br>
+        <button type="submit" onclick="javascript:mostrar();">REGISTER</button><br>
         <div><br>
             
-            <button type="button"><span><a href="Ontime/RegistroCliente">SOY CLIENTE</a></span></button>
-            <button type="button"><span><a href="Ontime/RegistroEmpresario">SOY EMPRESARIO</a></span></button>                     
+            <button type="button"><span><a href="Ontime/RegistroCliente">CLIENTE</a></span></button>
+            <button type="button"><span><a href="Ontime/RegistroEmpresario">EMPRESARIO</a></span></button>                     
         </div>
-    </div> 
-    </center>
-</section>    
+    </div>  
+</div>
 </body>
 </html>
