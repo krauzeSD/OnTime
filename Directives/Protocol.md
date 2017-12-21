@@ -1,7 +1,7 @@
 # Protocol Manual
 
 In order to correctly work with the full team, there is a need for understanding and coordination. Nonetheless, we must get 
-the most ot of our time. Because of this, we have written a protocol that we must always follow. 
+the most out of our time. Because of this, we have written a protocol that we must always follow. 
 
 This protocol might be changed in the future if the team believe to do so.
 
