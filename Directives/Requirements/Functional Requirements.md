@@ -12,7 +12,5 @@
   
 ## 3. Database
 #### 3.1 Tables creation
-#### 3.2 Constraints
-#### 3.3 Procedures
-#### 3.4 Testing
+#### 3.2 Testing
 ...
