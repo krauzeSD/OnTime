@@ -259,4 +259,24 @@ body{
         font-size: 5.5em;
         margin-bottom: 1.5vh;
     }
+    .registerForm {
+        height: 100vh;
+        flex-direction: column;
+    }
+    .registerForm  .inputText{
+        height: 4vh;
+    }
+    .registerForm .box {
+        width: 100vw;
+        font-size: 0.5vh;
+    }
+    .registerForm #registerButton {
+        font-size: 3vh;
+        
+    }
+}
+@media only screen and (max-height: 1000px){
+    #header {
+        height: 20vh;
+    }
 }
