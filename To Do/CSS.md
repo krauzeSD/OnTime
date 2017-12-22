@@ -1,4 +1,4 @@
 ## 19/12/2017
-  - [ ] General Style
-  - [ ] Forms Style
+  - [x] General Style
+  - [x] Forms Style
   - [ ] Register Transition 
