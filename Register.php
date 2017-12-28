@@ -1,28 +1,27 @@
-<?php # Script 9.5 - register.php #2
-// This script performs an INSERT query to add a record to the users table.
+<?php 
 
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     require ('mysqli_connect.php'); // Connect to the db.
         
-    $errors = array(); // Initialize an error array.
-    
-    // Check for a first name:
+        $errors = array(); 
+            
+    // Check for a name
     if (empty($_POST['Name'])) {
         $errors[] = 'Enter the name.';
     } else {
         $nameP = mysqli_real_escape_string($dbc, trim($_POST['Name']));
     }
     
-    // Check for a last name:
+    // Check for a surname
     if (empty($_POST['Surname'])) {
         $errors[] = 'Enter the surname.';
     } else {
         $surnameP = mysqli_real_escape_string($dbc, trim($_POST['Surname']));
     }
     
-    // Check for an email address:
+    // Check for an email address
     if (empty($_POST['email'])) {
         $errors[] = 'Enter the email address.';
     } else {
@@ -36,8 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $telephoneP = mysqli_real_escape_string($dbc, trim($_POST['telephone']));
     }
     
-    // Check for a password and match against the confirmed password:
+    //Check for a password
     if (!empty($_POST['password1'])) {
+    	//check if password1 = password2
         if ($_POST['password1'] != $_POST['password2']) {
             $errors[] = 'Your password did not match the confirmed password.';
         } else {
@@ -47,32 +47,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'Enter the password.';
     }
     
+
     //Company mode
-     if (empty($_POST['companyName'])) {
+
+    /* 
+	if ($_GET['mode']=='company'){
+
+	//Check for a company name
+    if (empty($_POST['companyName'])) {
         $errors[] = 'Enter the company name.';
     } else {
         $companyP = mysqli_real_escape_string($dbc, trim($_POST['companyName']));
     }
 
-     if (empty($_POST['companyEmail'])) {
+	//Check for a company email	
+    if (empty($_POST['companyEmail'])) {
         $errors[] = 'Enter the company email.';
     } else {
         $emailCP = mysqli_real_escape_string($dbc, trim($_POST['companyEmail']));
     }
 
+	//Check for a company telephone	
     if (empty($_POST['companyTelephone'])) {
         $errors[] = 'Enter the telephone number of the company.';
     } else {
         $telephoneCP = mysqli_real_escape_string($dbc, trim($_POST['companyTelephone']));
-    }
+    } }
+    */
     
 
 
     if (empty($errors)) { // If everything's OK.
-    
-        // Register the user in the database...
-    /*if ($_GET['mode']=='company'){
-        // Make the query:
+    //Company mode
+     
+    	/*
+    	if ($_GET['mode']=='company'){
         $insert = "INSERT INTO individuals (Name, Surname, email, telephone, EncryptedPassword) VALUES ('$nameP', '$surnameP', '$emailP', '@telephoneP', '$passwordP'"; 
         $insert = "INSERT INTO business (BusinessName, Email, telephone, Sector) VALUES ('$companyP', '$emailCP', '$telephoneCP', '$passwordP'"; 
         $done = @mysqli_query ($dbc, $q); // Run the query.
@@ -82,11 +91,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '<h1>Thank you!</h1>   
         
         } 
-        else{*/
-        $insert = "INSERT INTO individuals (Name, Surname, email, telephone, EncryptedPassword) VALUES ('$nameP', '$surnameP', '$emailP', '@telephoneP', 
-        '$passwordP'"; 
+        else{
+        */
+        // Register the user in the database...
+        	//insert the data in mysql
+        $insert = "INSERT INTO individuals (Email, Name, Surname, Telephone, EncryptedPassword) VALUES ('$emailP', '$nameP', '$surnameP', '$telephoneP', '$passwordP')"; 
 
-        $done = @mysqli_query ($dbc, $q); // Run the query.
+        $done = @mysqli_query ($dbc, $insert); // Run the query.
         if ($done) { // If it ran OK.
         
             // Print a message:
@@ -101,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Debugging message:
             echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $insert . '</p>';
                         
-        } // End of if ($done) IF.*/
+        } 
         
         mysqli_close($dbc); // Close the database connection.
 
@@ -109,16 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     
 
-}else { // Report the errors.
-    
-        echo '<h1>Error!</h1>
-        <p class="error">The following error(s) occurred:<br />';
-        foreach ($errors as $msg) { // Print each error.
-            echo " - $msg<br />\n";
-        }
-        echo '</p><p>Please try again.</p><p><br /></p>';
-        
-    } // End of if (empty($errors)) IF.
+}
     
     mysqli_close($dbc); 
     // Close the database connection.
@@ -170,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
     
     echo "
-    <input id='registerButton' class='button' type='button' value='Register'>   
+    <input id='registerButton' class='button' type='submit' name='submit' value='Register'>   
     </div>"
     
     ?>
