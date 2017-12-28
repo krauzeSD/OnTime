@@ -1,3 +1,3 @@
 ## 28/12/2017
-  - [ ] Register an individual
+  - [x] Register an individual
   - [ ] Register a Busisness
