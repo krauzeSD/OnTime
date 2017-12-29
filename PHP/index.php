@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8">
         <?php include('header.php')?>
-        <link rel="stylesheet" href="ontime.css">
+        <link rel="stylesheet" href="../CSS/ontime.css">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa|Mukta+Mahee|Quattrocento+Sans|Quicksand|Ropa+Sans|Rubik|Work+Sans|Yanone+Kaffeesatz" rel="stylesheet">
         <title>OnTime</title>
-        <script src="utilities.js"></script>
+        <script src="../JS/utilities.js"></script>
     </head>
     <body>
         <?php 
