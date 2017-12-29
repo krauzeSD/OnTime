@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="ontime.css">
+    <link rel="stylesheet" href="../CSS/ontime.css">
     <?php include('header.php')?>
    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Mukta+Mahee|Quattrocento+Sans|Quicksand|Ropa+Sans|Rubik|Work+Sans|Yanone+Kaffeesatz" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Register to OnTime</title>
-    <script src="utilities.js"></script>
+    <script src="../JS/utilities.js"></script>
 </head>
 <body>
    <?php 
