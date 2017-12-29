@@ -1,8 +1,8 @@
 ## 1. Interface  (HTML, CSS).
-  - [x] Entry / Login
-  - [x] Register
-  - [ ] Main
-  - [ ] 1.3 Appointments
+  - [x] 1.1 Entry / Login
+  - [x] 1.2 Register
+  - [ ] 1.3 Main
+  - [ ] 1.4 Appointments
 ...
   
 ## 2. Functions (PHP)
