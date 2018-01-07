@@ -10,6 +10,7 @@
 </head>
 <body>
    <?php 
+
     require_once('mysqli_connect.php');
 // Check for form submission:
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -131,8 +132,7 @@
                 }
                 
                 $insertParticular =  $insertParticular . ")";
-                //va bien
-                echo $insertParticular;
+               
                 $result_par = @mysqli_query($dbc, $insertParticular);
                 var_dump($result_par);
                 if ($result_par){
@@ -176,6 +176,7 @@
                     echo "<option>" . $row['Name'] . "</option>";
                 }           
                 echo "</select></p>";
+
             }
         }
         echo "
@@ -184,12 +185,11 @@
         "
     ?>
     <script src="../JS/registerCheck.js"></script>
-    <!--<?php include('footer.html')?>-->
+    <?php include('footer.php')?>
                 
                 
                 
                 
-                
-                
+         
 </body>
 </html>

@@ -1,3 +1,4 @@
+
     var registerButton = GetByID('registerButton');
 
     registerButton.onclick = function(){
@@ -90,7 +91,7 @@
         for (var index = 0; index < getparameters.length; index++) {
             var tmp = getparameters[index].split("=");
             if (tmp[1] == 'company') var isCompany = true;
-    } 
+        } 
         if  (isCompany){
             var companyname = document.getElementsByName('companyName')[0];
             var companyID = document.getElementsByName('companyID')[0];

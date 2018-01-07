@@ -1,0 +1,294 @@
+a{
+    text-decoration: none;
+}
+body{
+    background-color: #fefefe;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;    
+}
+/* ID'S */
+#about {
+    background-color: #6060B9;
+    color: white;
+    font-size: 2.5vh;
+    text-align: center;
+    width: 50vw;
+}
+#about a {
+    color: white;
+    font-size: 3.5vh;
+}
+#about a:hover {
+    color: blue;
+}
+#about .title {
+    color: white;
+    text-shadow: 0px 0px 1px white;
+}
+#company {
+    background-color: #6060D9;
+}
+#entry_container {
+    display: flex;
+    height: 60vh;
+    justify-content: space-around;
+    margin-top: 1vh;
+    width: 99vw;
+}
+#footer {
+    display: flex;
+    background-color: #e5e5e5;
+    bottom: 0;
+    height: 12vh;
+    position:absolute;
+    width: 100vw;
+}
+#footer * {
+    margin-top: 5vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+#footer .mention {
+    margin-left: auto;
+}
+#footer a {
+    margin-left: auto;
+    margin-top: 3.75vh;
+    color: #6906f9;
+    font-size: 5vh;
+}
+#header {
+    align-items: center;
+    background-color: #6060B9;
+    box-shadow: 0px 1px 10px black;
+    display: flex;
+    height: 12vh;
+    width: 100vw;
+}
+#individual {
+    background-color: #D96060;
+}
+#login {
+    align-items: center;
+    background-color: white;
+    border-radius: 0.25em;
+    display: flex;
+    font-family: 'Rubik', sans-serif;
+    justify-content: center;
+}
+#logo {
+    background-color: white;
+    border-radius: 100em;
+    height: 12vh;
+    margin-left: 5vh;
+    width: 12vh;
+}
+#motto {
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 6vh;
+    font-style: italic;
+    margin-left: 18vw;
+    
+}
+#registerButton:hover {
+    background-color: #60B960;
+    color: white;
+}
+/* CLASSES */
+.box {
+    align-items: center;
+    background-color: white;
+    border-radius: 0.25em;
+    box-shadow: 0px 0px 8px black;
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    justify-content: center;
+    margin-top: 5vh;
+    width: 32vw;
+}
+.button {
+    margin-top: -2vh;
+    background-color: white;
+    border-radius: 4px;
+    color: #6060B9;
+    font-family: 'Rubik', sans-serif;
+    font-size: 3.25vh;
+    height: 5vh;
+    width: 10vw;
+}
+.button:hover {
+    background-color: #6060B9;
+    color: white;
+}
+.input {
+    border-radius: 0.25em;
+    color: #555555;
+    font-size: 3vh;
+    height: 5vh;
+    margin-bottom: 0.5vh;
+}
+.text {
+    width: 20vw;
+}
+.text:focus {
+    outline-color: black;
+}
+.option {
+    width: 15vw;
+}
+.isbusiness {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100vw; /* Full width */
+    height: 30vh; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,255,0,0.4); /* Black w/ opacity */
+
+}
+.title {
+    color: #6060B9;
+    font-size: 1.75em;
+    letter-spacing: 0.25vw;
+    margin-bottom: 4vh;
+    text-shadow: 0px 0px 1px black;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+     background-color: #000000AA;
+    justify-content: center;
+}
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 80%;
+    height: 60vh;
+}
+.modal-content .box{
+    width: 38vw;
+    height: 30vh;
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.registerForm {
+    display: flex;
+    height: 76vh;
+    width: 100vw;
+    justify-content: center;
+}
+.registerForm .box {
+    width: 30vw;
+    background-color: #6060D9CC;
+}
+.registerForm .box .title {
+    color: white;
+    text-shadow: 0px 0px 1px white;
+}
+.registerForm .box form {
+    display:  flex;
+    flex-direction: column;
+}
+
+.registerForm .box #registerButton {
+    margin-left: 10.5vw;
+}
+/* Mobile Design */
+@media only screen and (max-device-width: 800px){
+    /* ID's */
+    #about {
+        display: none;
+    }
+    #entry_container {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    #footer {
+        display: none;
+    }
+    
+    #login form {
+        flex-direction: column;
+        font-size: 2.5em;
+        display: flex;
+    }
+    #logo {
+        height: 12.5em;
+        width: 12.5em;
+    }
+    #motto {
+        font-size: 3em;
+        margin-left: 1em;
+    }
+    #registerButton {
+        background-color: #60B960;
+    }
+    #submits {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+    /* CLASSES */
+    .box {
+        box-shadow: 0px 0px 0px white;
+        height: 80vh;
+        justify-content: center;
+        margin-top: 0;
+        width: 100vw;
+    }
+    .button {
+        background-color: #6060B9;
+        color: white;
+        font-size: 1em;
+        height: 8vh;
+        width: 32vw;
+    }
+    .inputText {
+        margin-bottom: 2vh;
+        text-align: center;   
+        width: 70vw;
+        height: 8vh;
+    }
+    .title {
+        font-size: 5.5em;
+        margin-bottom: 1.5vh;
+    }
+    .registerForm {
+        height: 100vh;
+        flex-direction: column;
+    }
+    .registerForm  .inputText{
+        height: 4vh;
+    }
+    .registerForm .box {
+        width: 100vw;
+        font-size: 0.5vh;
+    }
+    .registerForm #registerButton {
+        font-size: 3vh;
+        
+    }
+}
+@media only screen and (max-height: 1000px){
+    #header {
+        height: 20vh;
+    }
+}
