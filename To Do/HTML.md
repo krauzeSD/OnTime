@@ -6,5 +6,4 @@
   - [x] Finish Entry Screen
   - [x] Login Form 
   - [x] Register Form
-## 27/12/2017
-  - [ ] Complete Login Page with PHP
+
