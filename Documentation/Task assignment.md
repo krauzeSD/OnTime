@@ -14,3 +14,10 @@ We did the CSS altogether
   * [Pere Albertí](https://github.com/PereAlberti) - __Login__
   * [Javier Marín](https://github.com/javimarinbergas), [Álvaro Tihanyi](https://github.com/krauzeSD) - __PHP Functions__ 
   
+
+### Third Division - Sessions and Main page.
+ * Group A: [Enric González](https://github.com/Enric96), [Javier Marín](https://github.com/javimarinbergas) - __Sessions__
+ * Group B: [Pere Albertí](https://github.com/PereAlberti), [Álvaro Tihanyi](https://github.com/krauzeSD) - __Code Cleaning__
+
+
+  
