@@ -143,7 +143,7 @@
             if (companyemail.value !== ""){
                 var checkedEmail = 0;
                 for (var x in companyemail.value){
-                    if (email.value[x] == '@'){
+                    if (companyemail.value[x] == '@'){
                         checkedEmail++;
                     }
                     else if (companyemail.value[x] == '.'){
