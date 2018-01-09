@@ -2,3 +2,4 @@
   - [x] Register an individual
   - [x] Register a Busisness
   - [x] Complete Login Page with PHP
+  - [ ] Functions
