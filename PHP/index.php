@@ -10,48 +10,74 @@
     </head>
     <body>
         <?php 
+            require_once('mysqli_connect.php');
             function check_login($dbc, $email = '', $pass = '') {
-    $errors = array(); // Initialize error array.
-    // Validate the email address:
-    if (empty($email)) {
-        $errors[] = 'Please, enter your email address';
-    } else {
-        $e = mysqli_real_escape_string($dbc, trim($email));
-    }
-    // Validate the password:
-    if (empty($pass)) {
-        $errors[] = 'Please, enter your password.';
-    } else {
-        $p = mysqli_real_escape_string($dbc, trim($pass));
-    }
-    //Validate if in the DB the BusinessID field is Null or not:
-    if (is_null($BussID)){
-        // enter as Individual 
-    } else {
-        // enter as Business
-    }
-    if (empty($errors)) { // If everything's OK.
-        // Retrieve the Name and Surname for that email/password combination:
-        $q = "SELECT Name, Surname, BusinessID FROM Individuals WHERE Email='$e' AND EncryptedPassword=SHA1('$p') AND BusinessID='$BussID'";      
-        $r = @mysqli_query ($dbc, $q); // Run the query.
-        
-        // Check the result:
-        if (mysqli_num_rows($r) == 1) {
-            // Fetch the record:
-            $row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
+                $errors = array(); // Initialize error array.
+                // Validate the email address:
+                if (empty($email)) {
+                    $errors[] = 'Please, enter your email address';
+                } else {
+                    $e = mysqli_real_escape_string($dbc, trim($email));
+                }
+                // Validate the password:
+                if (empty($pass)) {
+                    $errors[] = 'Please, enter your password.';
+                } else {
+                    $p = mysqli_real_escape_string($dbc, trim($pass));
+                }
     
-            // Return true and the record:
-            return array(true, $row);
-            
-        } else { // Not a match!
-            $errors[] = 'The email address and password entered do not match those on file.';
-        }
+                if (empty($errors)) { // If everything's OK.
+                    // Retrieve the Name and Surname for that email/password combination:
+                   
+                    $q = "SELECT Name, Surname, BusinessID FROM Individuals WHERE Email='$e' AND EncryptedPassword=SHA1('$p')";      
+                    $r = @mysqli_query ($dbc, $q); // Run the query.
+                    
+                    // Check the result:
+                    if (mysqli_num_rows($r) == 1) {
+                        // Fetch the record:
+                        $row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
+                      
+                        // Return true and the record:
+                        return array(true, $row);
+
+                    } else { // Not a match!
+                        $errors[] = 'The email address and password entered do not match those on file.';
+                    }
+
+                } // End of empty($errors) IF.
+
+                // Return false and the errors:
+                return array(false, $errors);
+            } // End of check_login() function.
+        ?>
+        <?php
+            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $login_result = check_login($dbc, $_POST['user_email'], $_POST['user_pass']);
+                
+                if ($login_result[0]){
+                   
+                    echo "Thanks " . $login_result[1]['Name'] . " " . $login_result[1]['Surname'] . "!";
+                    echo '<br>';
+                    //Validate if in the DB the BusinessID field is Null or not:
+                    if (is_null($login_result[1]['BusinessID'])){
+                        session_start();
+                        $_SESSION["individual"]=$login_result[1]['Name'] . " " . $login_result[1]['Surname'];
+                        header("Location: main.php");
+                    } 
+                    else {
+                        session_start();
+                        $_SESSION["company"]=$login_result[1]['Name'] . " " . $login_result[1]['Surname'] . " " . $login_result[1]['BusinessID'];
+                        // lock $row
+                        header("Location: main.php");
+                    }
+                    
+                    
+                    
+                }
+            }
         
-    } // End of empty($errors) IF.
-    
-    // Return false and the errors:
-    return array(false, $errors);
-} // End of check_login() function.
+        
+        
         ?>
         <div id="entry_container">
             <div id="about" class="box">
@@ -67,11 +93,11 @@
             </div>
             <div id="login" class="box">
                <span class="title">OnTime</span>
-                <form>
+                <form method="post">
                     <div>
-                        <input class="input text" type="text" placeholder="Email">
+                        <input name="user_email" class="input text" type="text" placeholder="Email" value="<?php if (isset($_POST['user_email'])){echo $_POST['user_email'];}?>">
                     <br>
-                        <input class="input text" type="password" placeholder="Password">
+                        <input name="user_pass" class="input text" type="password" placeholder="Password">
                     </div>
                     <br>                  
                     <div id="submits">
@@ -81,7 +107,7 @@
                 </form>
             </div>
         </div>
-        <?php include('footer.html'); ?>
+        <?php include('footer.php'); ?>
         <div id="flag" class="modal">
             <div class="modal-content">
                 <div id="individual" class="box">I'm an individual</div>
