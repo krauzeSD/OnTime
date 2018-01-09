@@ -106,6 +106,7 @@
                     INSERT INTO business (BusinessID, BusinessName, Email, Sector, Telephone) 
                     VALUES (";
                     foreach ($company as $key=>$value){
+                        
                         $insertCompany = $insertCompany . "'" . $value . "'" . ",";
                     } 
                     $insertCompany = substr($insertCompany, 0, strlen($insertCompany) - 1);
@@ -119,7 +120,12 @@
                 INSERT INTO individuals (Name, Surname, email, telephone, EncryptedPassword, BusinessID) 
                 VALUES (";
                 foreach ($particular as $key=>$value){
-                    $insertParticular = $insertParticular . "'" . $value . "'" . ",";
+                    if ($key == 'password'){
+                        $insertParticular = $insertParticular . "SHA1('" . $value . "'),";
+                    }
+                    else {
+                        $insertParticular = $insertParticular . "'" . $value . "'" . ",";   
+                    }
                 } 
                
                 if (isset($_POST['companyID'])){
@@ -133,13 +139,12 @@
                 $insertParticular =  $insertParticular . ")";
                
                 $result_par = @mysqli_query($dbc, $insertParticular);
-                var_dump($result_par);
+                
                 if ($result_par){
                     echo '<h1>Thank you!</h1>';
                 }
-                
                 mysqli_close($dbc); 
-                   
+                exit();
             }
         }
     ?>
@@ -156,7 +161,7 @@
                 <br>            
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        if ($_GET['mode'] == 'company'){
+            if ($_GET['mode'] == 'company'){
                 echo "
                 </div>
                 <div class='box'>
