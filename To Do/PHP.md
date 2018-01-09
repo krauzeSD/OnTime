@@ -3,3 +3,5 @@
   - [x] Register a Busisness
   - [x] Complete Login Page with PHP
   - [ ] Functions
+  - [ ] Main Page
+  - [ ] Session
