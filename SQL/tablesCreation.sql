@@ -1,5 +1,5 @@
 CREATE DATABASE ontime;
-USE OnTime;
+USE ontime;
 CREATE TABLE sectors
 (
 	Name VARCHAR(50) NOT NULL,
