@@ -19,5 +19,7 @@ We did the CSS altogether
  * Group A: [Enric González](https://github.com/Enric96), [Javier Marín](https://github.com/javimarinbergas) - __Sessions__
  * Group B: [Pere Albertí](https://github.com/PereAlberti), [Álvaro Tihanyi](https://github.com/krauzeSD) - __Code Cleaning__
 
-
+### Fourth Division - Search calendar utilities and sessions.
+* Group A: [Álvaro Tihanyi](https://github.com/krauzeSD), [Javier Marín](https://github.com/javimarinbergas) - __Sessions__
+* Group B: [Pere Albertí](https://github.com/PereAlberti), [Enric González](https://github.com/Enric96) - __Calendar utilities__
   
