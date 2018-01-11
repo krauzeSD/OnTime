@@ -1,11 +1,11 @@
-CREATE DATABASE OnTime;
+CREATE DATABASE ontime;
 USE OnTime;
-CREATE TABLE Sectors
+CREATE TABLE sectors
 (
 	Name VARCHAR(50) NOT NULL,
     PRIMARY KEY (Name)
 );
-CREATE TABLE Business
+CREATE TABLE business
 (
 	BusinessID VARCHAR(15) NOT NULL,    
     BusinessName VARCHAR(50) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE Business
     UNIQUE (Email),
     FOREIGN KEY (Sector) REFERENCES Sectors(Name)
 );
-CREATE TABLE Establishments
+CREATE TABLE establishments
 (
     EstablishmentID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     BusinessID VARCHAR(15) NOT NULL,    
@@ -26,7 +26,7 @@ CREATE TABLE Establishments
     FOREIGN KEY (BusinessID) REFERENCES Business (BusinessID),
     PRIMARY KEY (EstablishmentID)  
 );
-CREATE TABLE Individuals
+CREATE TABLE individuals
 (
     Email VARCHAR(50) NOT NULL,
     Name VARCHAR(50) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE Individuals
     FOREIGN KEY (BusinessID) REFERENCES Business(BusinessID),
     PRIMARY KEY (Email)
 );
-CREATE TABLE Appointments
+CREATE TABLE appointments
 (
 	Email VARCHAR(50) NOT NULL,
     BusinessID VARCHAR(15) NOT NULL,
