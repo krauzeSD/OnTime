@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
         <?php include('header.php')?>
-        <link rel="stylesheet" href="../CSS/ontime.css">
-        <link href="https://fonts.googleapis.com/css?family=Comfortaa|Mukta+Mahee|Quattrocento+Sans|Quicksand|Ropa+Sans|Rubik|Work+Sans|Yanone+Kaffeesatz" rel="stylesheet">
-        <title>OnTime</title>
-        <script src="../JS/utilities.js"></script>
     </head>
     <body>
         <?php 
@@ -55,9 +50,6 @@
                 $login_result = check_login($dbc, $_POST['user_email'], $_POST['user_pass']);
                 
                 if ($login_result[0]){
-                   
-                    echo "Thanks " . $login_result[1]['Name'] . " " . $login_result[1]['Surname'] . "!";
-                    echo '<br>';
                     //Validate if in the DB the BusinessID field is Null or not:
                     if (is_null($login_result[1]['BusinessID'])){
                         echo "You are an individual";
@@ -66,7 +58,7 @@
                         echo "You are a company";
                     }
                     
-                    
+                    header('Location: main.php');
                     
                 }
             }
