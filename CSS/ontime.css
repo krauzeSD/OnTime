@@ -95,7 +95,23 @@ body{
     background-color: #60B960;
     color: white;
 }
+#sidebar {
+    width: 20vw;
+    height: 70vh;
+    
+    margin-right: auto;
+}
+#sidebar a {
+    margin-bottom: 8vh;
+}
 /* CLASSES */
+.main_container {
+    display: flex;
+    
+}
+.main_container .box {
+    margin-right: auto;
+}
 .box {
     align-items: center;
     background-color: white;
