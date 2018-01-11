@@ -2,6 +2,7 @@
   - [x] Register an individual
   - [x] Register a Busisness
   - [x] Complete Login Page with PHP
-  - [ ] Functions
-  - [ ] Main Page
+  - [x] Functions
   - [ ] Session
+  - [ ] Calendar
+  - [ ] Notifications
