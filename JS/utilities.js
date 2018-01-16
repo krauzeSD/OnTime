@@ -57,7 +57,31 @@ function AJAX_select(type, url, parameterName, parameterValue, callback){
 }
 
 
+function show_companies(parameter){
+	var result_div = GetByID('result_company');
+	if (result_div){
+		EraseChildren(result_div);
+		var result = [];
+		var first = parameter.split(",");
+		for (var x in first){
+			var second = first[x].split("_");
+			result.push(second);
+		}
+		console.log(result);
+		for (var z=0; z < 20; z++){
+			
+				var company = CreateElement('div', '', 'company_box');
+				company.innerHTML = 'patata';
+				company.style.color = 'black';
+				company.onclick = function(){
+				}
+	
 
+				result_div.appendChild(company);
+			}
+		}
+	}
+	
 
 
 
