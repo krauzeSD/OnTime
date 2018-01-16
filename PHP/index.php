@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include('header.php')?>
+        <?php 
+        session_start();
+        if (isset($_SESSION['IndividualEmail'])){
+            header('Location: logout.php');
+        }
+        else {
+            include('header.php');
+        }
+        
+        
+        
+        ?>
     </head>
     <body>
         <?php 
@@ -24,7 +35,7 @@
                 if (empty($errors)) { // If everything's OK.
                     // Retrieve the Name and Surname for that email/password combination:
                    
-                    $q = "SELECT Name, Surname, BusinessID FROM Individuals WHERE Email='$e' AND EncryptedPassword=SHA1('$p')";      
+                    $q = "SELECT Name, Surname, Email, BusinessID FROM individuals WHERE Email='$e' AND EncryptedPassword=SHA1('$p')";      
                     $r = @mysqli_query ($dbc, $q); // Run the query.
                     
                     // Check the result:
@@ -46,18 +57,29 @@
             } // End of check_login() function.
         ?>
         <?php
+            
             if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                
                 $login_result = check_login($dbc, $_POST['user_email'], $_POST['user_pass']);
                 
                 if ($login_result[0]){
+                    session_start();    
                     //Validate if in the DB the BusinessID field is Null or not:
-                    if (is_null($login_result[1]['BusinessID'])){
-                        echo "You are an individual";
+                    if (!is_null($login_result[1]['BusinessID'])){
+                        $q = "SELECT BusinessID, BusinessName, Email, Telephone, Sector FROM business WHERE BusinessID=" . $login_result[1]['BusinessID'];
+                        $r = @mysqli_query ($dbc, $q);
+                        $row = mysqli_fetch_array($r, MYSQL_ASSOC);
+                        $_SESSION['BusinessID'] = $row['BusinessID'];
+                        $_SESSION['BusinessName'] = $row['BusinessName'];
+                        $_SESSION['BusinessEmail'] = $row['BusinessEmail'];
+                        $_SESSION['BusinessTelephone'] = $row['BusinessTelephone'];
+                        $_SESSION['Sector'] = $row['Sector'];
                     } 
-                    else {
-                        echo "You are a company";
-                    }
                     
+                    $_SESSION['IndividualEmail'] = $login_result[1]['Email'];
+                    $_SESSION['IndividualName'] = $login_result[1]['Name'];
+                    $_SESSION['IndividualSurname'] = $login_result[1]['Surname'];
+                    $_SESSION['IndividualTelephone'] = $login_result[1]['Telephone'];
                     header('Location: main.php');
                     
                 }

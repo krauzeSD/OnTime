@@ -158,31 +158,21 @@
                 <br>            
     
     <script>
-        var email = document.getElementsByName('Email')[0];
-        console.log(email.value);
-        email.onchange = function(){
-            var data = "email=" + email.value;
-            var xml_http = new XMLHttpRequest();
-            xml_http.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    
-                    if(this.responseText){
-                        
-                        document.getElementById('email_alert').innerHTML = "Email already in use.";
-                        document.getElementById('registerButton').disabled = true;
-                    }
-                    else {
-                        document.getElementById('email_alert').innerHTML = "";
-                        document.getElementById('registerButton').disabled = false;
-                    }
-                }
-            };
-            xml_http.open("POST", "check_email.php", true); 
-            xml_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");   
-            
-            xml_http.send(data);
+        function check_user_exist(parameterEmail){
+            if (parameterEmail){
+                document.getElementById('email_alert').innerHTML = "Email already in use.";
+                document.getElementById('registerButton').disabled = true;
+            }
+            else {
+                document.getElementById('email_alert').innerHTML = "";
+                document.getElementById('registerButton').disabled = false;
+            }
         }
+        var email = document.getElementsByName('Email')[0];
         
+        email.onchange = function(){
+            AJAX_select('POST', 'check_email.php', 'email', this.value, check_user_exist);
+        }    
     </script>        
     <?php
                 
@@ -201,7 +191,7 @@
                         <input class='input text' type='text' name='companyTelephone' placeholder='Company Telephone'>
                         <p>Sectors 
                         <select name='sector' class='input option'>";
-                $q = "SELECT Name FROM Sectors";     
+                $q = "SELECT Name FROM sectors";     
                 $r = @mysqli_query ($dbc, $q); // Run the query.
                 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
                 {
