@@ -10,11 +10,31 @@
 </head>
 <body>
     <div id="header">
-        <a href="index.php"><img id="logo" src="../IMG/ontime_logo.png" alt="logo"></a>
+        <a href="<?php
+            session_start();
+            if (isset($_SESSION['IndividualEmail'])){
+                echo "main.php";
+            }
+            else {
+                echo "index.php";         
+            }
+                 
+        ?>"><img id="logo" src="../IMG/ontime_logo.png" alt="logo"></a>
         <?php 
-            if (!isset($_SESSION)){
+            if (!isset($_SESSION['IndividualEmail'])){
                 echo "<span id='motto'>Appointments in no time</span>";
             }
-        ?>
+            else {
+                echo "
+                <form style='margin:auto 0 auto auto'>
+                    <input id='search_bar' class='input' type='text' name='search_bar'>
+                    
+                </form>
+                <img class='search_icon' src='../IMG/search_icon.png'>
+                    ";
+                
+                echo "<a id='logout' href='logout.php'>Logout</a>";
+            }
+       ?>
     </div>
 </body>
