@@ -43,6 +43,21 @@ function EraseChildren(parent){
 
 
 
+function AJAX_select(type, url, parameterName, parameterValue, callback){
+    var data = parameterName + "=" + parameterValue;
+    var xml_http = new XMLHttpRequest();
+    xml_http.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            callback(this.response);
+        }
+    };
+    xml_http.open(type, url, true);
+    xml_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+    xml_http.send(data);
+}
+
+
+
 
 
 
