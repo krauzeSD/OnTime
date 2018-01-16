@@ -45,7 +45,8 @@ CREATE TABLE appointments
     Date DATE NOT NULL,
     Time TIME NOT NULL,
     Location INT UNSIGNED NOT NULL,
-    
+    Accepted BIT NOT NULL DEFAULT 0,
+	
     FOREIGN KEY (Email) REFERENCES individuals(Email),
     FOREIGN KEY (BusinessID) REFERENCES business(BusinessID),
     FOREIGN KEY (Location) REFERENCES establishments(EstablishmentID),
