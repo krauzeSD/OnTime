@@ -18,10 +18,10 @@
 ## Status
   
    **In development:**
-   * Login functionality.
    * Main interface.
    
    **Functional:** 
    * Register of individuals and companies.
+   * Login functionality.
    
    
