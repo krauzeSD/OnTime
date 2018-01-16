@@ -51,4 +51,12 @@ CREATE TABLE appointments
     FOREIGN KEY (Location) REFERENCES establishments(EstablishmentID),
     PRIMARY KEY (Email, BusinessID)
 );
-
+CREATE TABLE settings
+(
+    UserEmail VARCHAR(50) NOT NULL,
+    AccountIMG VARCHAR(100) NOT NULL DEFAULT '../IMG/ontime_logo.png',
+    MainColor VARCHAR(7) NOT NULL DEFAULT '#6060B9',
+    SecondColor VARCHAR(7) NOT NULL DEFAULT '#FFFFFF',
+    FOREIGN KEY (UserEmail) REFERENCES individuals(Email),
+    PRIMARY KEY (UserEmail)
+);
