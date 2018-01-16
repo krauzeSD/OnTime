@@ -9,84 +9,81 @@
         else {
             include('header.php');
         }
-        
-        
-        
         ?>
     </head>
     <body>
         <?php 
             require_once('mysqli_connect.php');
             function check_login($dbc, $email = '', $pass = '') {
-                $errors = array(); // Initialize error array.
-                // Validate the email address:
+                $errors = array(); 
                 if (empty($email)) {
                     $errors[] = 'Please, enter your email address';
                 } else {
-                    $e = mysqli_real_escape_string($dbc, trim($email));
+                    $escaped_email = mysqli_real_escape_string($dbc, trim($email));
                 }
                 // Validate the password:
                 if (empty($pass)) {
                     $errors[] = 'Please, enter your password.';
                 } else {
-                    $p = mysqli_real_escape_string($dbc, trim($pass));
+                    $escaped_pass = mysqli_real_escape_string($dbc, trim($pass));
                 }
     
-                if (empty($errors)) { // If everything's OK.
-                    // Retrieve the Name and Surname for that email/password combination:
+                if (empty($errors)) {
                    
-                    $q = "SELECT Name, Surname, Email, BusinessID FROM individuals WHERE Email='$e' AND EncryptedPassword=SHA1('$p')";      
-                    $r = @mysqli_query ($dbc, $q); // Run the query.
+                    $query = "SELECT Name, Surname, Email, BusinessID FROM individuals WHERE Email='$escaped_email' AND EncryptedPassword=SHA1('$escaped_pass')";      
+                    $result = @mysqli_query ($dbc, $query);
                     
-                    // Check the result:
-                    if (mysqli_num_rows($r) == 1) {
-                        // Fetch the record:
-                        $row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
+                 
+                    if (mysqli_num_rows($result) == 1) {
+                       
+                        $row = mysqli_fetch_array ($result, MYSQLI_ASSOC);
                       
-                        // Return true and the record:
+                       
                         return array(true, $row);
 
-                    } else { // Not a match!
-                        $errors[] = 'The email address and password entered do not match those on file.';
+                    } else {
+                        $errors[] = 'Incorrect password or email. Please try again.';
                     }
 
-                } // End of empty($errors) IF.
-
-                // Return false and the errors:
+                } 
                 return array(false, $errors);
-            } // End of check_login() function.
-        ?>
-        <?php
+            } 
             
             if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-                
                 $login_result = check_login($dbc, $_POST['user_email'], $_POST['user_pass']);
                 
                 if ($login_result[0]){
-                    session_start();    
-                    //Validate if in the DB the BusinessID field is Null or not:
+                    session_start();
+                    
                     if (!is_null($login_result[1]['BusinessID'])){
-                        $q = "SELECT BusinessID, BusinessName, Email, Telephone, Sector FROM business WHERE BusinessID=" . $login_result[1]['BusinessID'];
-                        $r = @mysqli_query ($dbc, $q);
-                        $row = mysqli_fetch_array($r, MYSQL_ASSOC);
+                        $query = "SELECT BusinessID, BusinessName, Email, Telephone, Sector FROM business WHERE BusinessID=" . $login_result[1]['BusinessID'];
+                        $result = @mysqli_query ($dbc, $query);
+                        $row = mysqli_fetch_array($result, MYSQL_ASSOC);
                         $_SESSION['BusinessID'] = $row['BusinessID'];
                         $_SESSION['BusinessName'] = $row['BusinessName'];
                         $_SESSION['BusinessEmail'] = $row['BusinessEmail'];
                         $_SESSION['BusinessTelephone'] = $row['BusinessTelephone'];
                         $_SESSION['Sector'] = $row['Sector'];
                     } 
-                    
                     $_SESSION['IndividualEmail'] = $login_result[1]['Email'];
                     $_SESSION['IndividualName'] = $login_result[1]['Name'];
                     $_SESSION['IndividualSurname'] = $login_result[1]['Surname'];
                     $_SESSION['IndividualTelephone'] = $login_result[1]['Telephone'];
+                    //get settings
+                    $query = "SELECT AccountIMG, MainColor, SecondColor FROM settings WHERE UserEmail='". $login_result[1]['Email'] . "'";
+                    $result = @mysqli_query($dbc, $query);
+                    $row = mysqli_fetch_array($result, MYSQL_ASSOC);
+                    $_SESSION['AccountIMG'] = $row['AccountIMG'];
+                    $_SESSION['MainColor'] = $row['MainColor'];
+                    $_SESSION['SecondColor'] = $row['SecondColor'];
                     header('Location: main.php');
-                    
+                }
+                else {
+                    foreach($login_result[1] as $report){
+                        echo "- $report" . "<br>";
+                    }
                 }
             }
-        
-        
-        
         ?>
         <div id="entry_container">
             <div id="about" class="box">

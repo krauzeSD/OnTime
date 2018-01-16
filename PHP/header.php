@@ -10,15 +10,13 @@
 </head>
 <body>
     <div id="header">
-        <a href="<?php
-            session_start();
+        <a href="<?php            
             if (isset($_SESSION['IndividualEmail'])){
                 echo "main.php";
             }
             else {
                 echo "index.php";         
             }
-                 
         ?>"><img id="logo" src="../IMG/ontime_logo.png" alt="logo"></a>
         <?php 
             if (!isset($_SESSION['IndividualEmail'])){
@@ -27,12 +25,9 @@
             else {
                 echo "
                 <form style='margin:auto 0 auto auto'>
-                    <input id='search_bar' class='input' type='text' name='search_bar'>
-                    
+                    <input id='search_bar' class='input' type='text' name='search_bar'>       
                 </form>
-                <img class='search_icon' src='../IMG/search_icon.png'>
-                    ";
-                
+                <img class='search_icon' src='../IMG/search_icon.png'>";
                 echo "<a id='logout' href='logout.php'>Logout</a>";
             }
        ?>
