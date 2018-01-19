@@ -13,17 +13,17 @@ CREATE TABLE business
     Telephone VARCHAR(15) NOT NULL,
     Sector VARCHAR(50) NOT NULL,
     
-    PRIMARY KEY (BusinessID),
+    PRIMARY KEY (BusinessName),
     UNIQUE (Email),
     FOREIGN KEY (Sector) REFERENCES sectors(Name)
 );
 CREATE TABLE establishments
 (
     EstablishmentID INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    BusinessID VARCHAR(15) NOT NULL,    
+    Owner VARCHAR(15) NOT NULL,    
     Location VARCHAR(50) NOT NULL,
     
-    FOREIGN KEY (BusinessID) REFERENCES business (BusinessID),
+    FOREIGN KEY (Owner) REFERENCES business (BusinessName),
     PRIMARY KEY (EstablishmentID)  
 );
 CREATE TABLE individuals
@@ -33,24 +33,24 @@ CREATE TABLE individuals
     Surname VARCHAR(50) NOT NULL,
     Telephone VARCHAR(15) NOT NULL,
     EncryptedPassword VARCHAR(200) NOT NULL,
-    BusinessID VARCHAR(15) NULL,
+    BusinessName VARCHAR(15) NULL,
     
-    FOREIGN KEY (BusinessID) REFERENCES business(BusinessID),
+    FOREIGN KEY (BusinessName) REFERENCES business(BusinessName),
     PRIMARY KEY (Email)
 );
 CREATE TABLE appointments
 (
 	Email VARCHAR(50) NOT NULL,
-    BusinessID VARCHAR(15) NOT NULL,
-    Date DATE NOT NULL,
-    Time TIME NOT NULL,
+    BusinessName VARCHAR(15) NOT NULL,
+    start VARCHAR(50) NOT NULL,
+    end VARCHAR(50) NOT NULL,
     Location INT UNSIGNED NOT NULL,
-    Accepted BIT NOT NULL DEFAULT 0,
-	
+    Accepted BIT NOT NULL DEFAULT 0, 
+    
     FOREIGN KEY (Email) REFERENCES individuals(Email),
-    FOREIGN KEY (BusinessID) REFERENCES business(BusinessID),
+    FOREIGN KEY (BusinessName) REFERENCES business(BusinessName),
     FOREIGN KEY (Location) REFERENCES establishments(EstablishmentID),
-    PRIMARY KEY (Email, BusinessID)
+    PRIMARY KEY (Email, BusinessName, Date, Time)
 );
 CREATE TABLE settings
 (
