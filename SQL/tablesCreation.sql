@@ -50,7 +50,7 @@ CREATE TABLE appointments
     FOREIGN KEY (Email) REFERENCES individuals(Email),
     FOREIGN KEY (BusinessName) REFERENCES business(BusinessName),
     FOREIGN KEY (Location) REFERENCES establishments(EstablishmentID),
-    PRIMARY KEY (Email, BusinessName, Date, Time)
+    PRIMARY KEY (Email, BusinessName, start, end)
 );
 CREATE TABLE settings
 (
