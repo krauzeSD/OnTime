@@ -23,3 +23,17 @@ We did the CSS altogether
 * Group A: [Álvaro Tihanyi](https://github.com/krauzeSD), [Javier Marín](https://github.com/javimarinbergas) - __Sessions__
 * Group B: [Pere Albertí](https://github.com/PereAlberti), [Enric González](https://github.com/Enric96) - __Calendar utilities__
   
+### Fifth Division - FullCalendar usage and Search companies page.
+* Group A: [Álvaro Tihanyi](https://github.com/krauzeSD), [Pere Albertí](https://github.com/PereAlberti) - __FullCalendar__
+* Group B: [Álvaro Tihanyi](https://github.com/krauzeSD), [Javier Marín](https://github.com/javimarinbergas) - __Search companies__
+
+### Sixth Division - Make appoinments and Manage requests page.
+* [Javier Marín](https://github.com/javimarinbergas) - __Manage requests & Hosted deployment__
+* [Álvaro Tihanyi](https://github.com/krauzeSD) - __Make appointments__
+
+### Seventh Division - Get events from DB, Mail support, Agenda and Settings.
+* [Álvaro Tihanyi](http://github.com/krauzeSD) - __Get events__
+* [Javier Marín](https://github.com/javimarinbergas) - __Mail support__
+* [Pere Albertí](https://github.com/PereAlberti) - __Agenda__
+* [Enric González](https://github.com/Enric96) - __Settings__
+  
