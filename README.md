@@ -16,7 +16,7 @@
 ## Status
   
    **In development:**
-   * Settings.
+   * Development halted due to deadline. 
    
    **Functional:** 
    * Register of individuals and companies.
@@ -25,4 +25,5 @@
    * Make appointments.
    * Manage requests for appointments.
    * Agenda.
+   * Settings.
    
