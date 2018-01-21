@@ -1,8 +1,6 @@
 # OnTime
 
   Web application to arrange appointments between business and their respective clients.
-  
-  By Sant Josep Obrer 
 
 ## Working Team
 
@@ -18,10 +16,13 @@
 ## Status
   
    **In development:**
-   * Main interface.
+   * Settings.
    
    **Functional:** 
    * Register of individuals and companies.
    * Login functionality.
-   
+   * Main interface.
+   * Make appointments.
+   * Manage requests for appointments.
+   * Agenda.
    
