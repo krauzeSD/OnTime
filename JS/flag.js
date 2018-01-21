@@ -1,41 +1,83 @@
-function CreateFlag(){
-    var companySelect = CreateElement('div', 'flag', 'modal');
-    var selectContent = CreateElement('div', '', 'modal-content');
-    var search_div = CreateElement('div');
-    var search_bar = CreateElement('input', 'search_company', 'input');
-    var search_img = CreateElement('img', '', 'search_icon');
-	var result_div = CreateElement('div', 'result_company');
-    var css = '.search_icon:hover{cursor: pointer}';
-    var style = document.createElement('style');
-
-    companySelect.style.display = 'flex';
-    selectContent.style.display = 'flex';
-    selectContent.style.textAlign = "center";  
-    selectContent.style.flexDirection = 'column';
-    selectContent.style.backgroundColor = 'red';
-    search_div.style.display = 'flex';
-    search_img.setAttribute('src', '../IMG/search_icon_white.png');
-    search_img.style.marginTop = '0.5vh';
-
-    search_img.onclick = function(){
-        if (search_bar.value !== ""){
-            AJAX_select('POST', 'select_companies.php', 'pattern', search_bar.value, show_companies);
-        }
+function CreateFlag(mode, content){
+    var flag = GetByID('flag');
+    //Creates a FullCalendar script to display in the flag.
+    if (mode == 'calendar'){
+         var calendarSetup = CreateElement('script');
+         var flagContent = CreateElement('div', '', 'modal-content');
+         var name = CreateElement('h2');
+         var calendar = CreateElement('div', 'calendar');
+         
+         calendarSetup.innerHTML = `
+                $('#calendar').fullCalendar({
+                    header: {
+                    center: 'month,agendaWeek,agendaDay'
+                },
+                allDaySlot: false,
+                selectable: false,
+                eventBackgroundColor: 'red',
+                eventBorderColor: 'black',
+                eventLimit: true,
+                events: {
+                    url: 'get_events.php?BusinessName=${content}',
+                    type: 'GET',
+                    error: function(){
+                        alert('There was an error fetching events.');
+                    }
+                },
+                dayClick: function(date){
+                   var vista = $('#calendar').fullCalendar('getView').name;
+        
+                   if (vista == 'month'){
+                       $('#calendar').fullCalendar('gotoDate', date);
+                       $('#calendar').fullCalendar('changeView', 'agendaDay');
+                   }
+                   else {
+                       if (vista == 'agendaDay'){
+                           var form = CreateElement('form');
+                           form.method = 'post';
+                           form.action = 'makeAppoint.php';
+                           form.style.display = 'none';
+                           var start = CreateElement('input');
+                           start.name = 'start';
+                           start.value = date.format();
+                            var end = CreateElement('input');
+                            end.name = 'end';
+                            end.value = date.add('1', 'hour').format();
+                        
+                           var companyName = CreateElement('input');
+                            companyName.name = 'companyName';
+                            companyName.value = '${content}';
+                            form.appendChild(companyName);
+                           form.appendChild(start);
+                           form.appendChild(end);
+                           GetElement('body').appendChild(form);
+                           form.submit();
+                       }
+                   }
+                },
+                aspectRatio: 3 
+            });`
+     }
+    //Check if flags exist. If so, it erases it.
+    if (flag){
+        EraseElement(flag);
     }
-
-    if (style.styleSheet) {
-        style.styleSheet.cssText = css;
-    } 
-    else {
-        style.appendChild(document.createTextNode(css));
-    }
-    GetElement('head').appendChild(style);
-    search_div.appendChild(search_bar);
-    search_div.appendChild(search_img);
-    selectContent.appendChild(search_div);
-	selectContent.appendChild(result_div);
-    companySelect.appendChild(selectContent);
-    GetElement('body').appendChild(companySelect); 
+    //Creation of elements
+    flag = CreateElement('div', 'flag', 'modal');
+    name.innerHTML = content;
+    //Style of elements
+    flag.style.display = 'flex';
+    flagContent.style.display = 'flex'; 
+    flagContent.style.backgroundColor = '#EEEEEE';
+    flagContent.style.height = '79vh';
+    flagContent.style.flexDirection = 'column';
+    flagContent.style.justifyContent = 'flex-start';
+    //Appending of elements
+    flagContent.appendChild(name);
+    flagContent.appendChild(calendar);
+    flag.appendChild(flagContent);
+    GetElement('body').appendChild(flag); 
+    GetElement('head').appendChild(calendarSetup);
 }
 
 

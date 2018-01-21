@@ -1,90 +1,61 @@
+<?php 
+    require_once('mysqli_connect.php');
+    require_once('functions.php');
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){   
+        $login_result = check_login($dbc, $_POST['user_email'], $_POST['user_pass']);
+        //If the login is succesful we send a value of true together with an array of data.
+        if ($login_result[0]){
+            session_start();    
+            //If the logged user is representing a company.
+            if (!is_null($login_result[1]['BusinessName'])){
+                $query = "SELECT BusinessID, BusinessName, Email, Telephone, Sector FROM business WHERE BusinessName='" . $login_result[1]['BusinessName'] . "'";
+                $result = @mysqli_query ($dbc, $query);
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                //We store all their company's information in SESSION:
+                $_SESSION['BusinessID'] = $row['BusinessID'];
+                $_SESSION['BusinessName'] = $row['BusinessName'];
+                $_SESSION['BusinessEmail'] = $row['Email'];
+                $_SESSION['BusinessTelephone'] = $row['Telephone'];
+                $_SESSION['Sector'] = $row['Sector'];
+            }
+            //Anyhow we store the individual's information.
+            $_SESSION['IndividualEmail'] = $login_result[1]['Email'];
+            $_SESSION['IndividualName'] = $login_result[1]['Name'];
+            $_SESSION['IndividualSurname'] = $login_result[1]['Surname'];
+            $_SESSION['IndividualTelephone'] = $login_result[1]['Telephone'];
+            //We also get the settings configuration
+            $query = "SELECT AccountIMG, MainColor, SecondColor FROM settings WHERE UserEmail='". $login_result[1]['Email'] . "'";
+            $result = @mysqli_query($dbc, $query);
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            $_SESSION['AccountIMG'] = $row['AccountIMG'];
+            $_SESSION['MainColor'] = $row['MainColor'];
+            $_SESSION['SecondColor'] = $row['SecondColor'];
+            //Finally we redirect to the main page.
+            header('Location: main.php');
+        }
+        else {
+            //If there are errors, we show them a report list.
+            foreach($login_result[1] as $report){
+                echo "- $report" . "<br>";
+            }
+        }
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <?php 
-        session_start();
+       <?php 
         if (isset($_SESSION['IndividualEmail'])){
+            //If a user is logged in and tries to acces this page via changing the url we log them out.
             header('Location: logout.php');
         }
         else {
             include('header.php');
         }
-        ?>
+        ?>  
     </head>
     <body>
-        <?php 
-            require_once('mysqli_connect.php');
-            function check_login($dbc, $email = '', $pass = '') {
-                $errors = array(); 
-                if (empty($email)) {
-                    $errors[] = 'Please, enter your email address';
-                } else {
-                    $escaped_email = mysqli_real_escape_string($dbc, trim($email));
-                }
-                // Validate the password:
-                if (empty($pass)) {
-                    $errors[] = 'Please, enter your password.';
-                } else {
-                    $escaped_pass = mysqli_real_escape_string($dbc, trim($pass));
-                }
-    
-                if (empty($errors)) {
-                   
-                    $query = "SELECT Name, Surname, Email, BusinessID FROM individuals WHERE Email='$escaped_email' AND EncryptedPassword=SHA1('$escaped_pass')";      
-                    $result = @mysqli_query ($dbc, $query);
-                    
-                 
-                    if (mysqli_num_rows($result) == 1) {
-                       
-                        $row = mysqli_fetch_array ($result, MYSQLI_ASSOC);
-                      
-                       
-                        return array(true, $row);
-
-                    } else {
-                        $errors[] = 'Incorrect password or email. Please try again.';
-                    }
-
-                } 
-                return array(false, $errors);
-            } 
-            
-            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $login_result = check_login($dbc, $_POST['user_email'], $_POST['user_pass']);
-                
-                if ($login_result[0]){
-                    session_start();
-                    
-                    if (!is_null($login_result[1]['BusinessID'])){
-                        $query = "SELECT BusinessID, BusinessName, Email, Telephone, Sector FROM business WHERE BusinessID=" . $login_result[1]['BusinessID'];
-                        $result = @mysqli_query ($dbc, $query);
-                        $row = mysqli_fetch_array($result, MYSQL_ASSOC);
-                        $_SESSION['BusinessID'] = $row['BusinessID'];
-                        $_SESSION['BusinessName'] = $row['BusinessName'];
-                        $_SESSION['BusinessEmail'] = $row['BusinessEmail'];
-                        $_SESSION['BusinessTelephone'] = $row['BusinessTelephone'];
-                        $_SESSION['Sector'] = $row['Sector'];
-                    } 
-                    $_SESSION['IndividualEmail'] = $login_result[1]['Email'];
-                    $_SESSION['IndividualName'] = $login_result[1]['Name'];
-                    $_SESSION['IndividualSurname'] = $login_result[1]['Surname'];
-                    $_SESSION['IndividualTelephone'] = $login_result[1]['Telephone'];
-                    //get settings
-                    $query = "SELECT AccountIMG, MainColor, SecondColor FROM settings WHERE UserEmail='". $login_result[1]['Email'] . "'";
-                    $result = @mysqli_query($dbc, $query);
-                    $row = mysqli_fetch_array($result, MYSQL_ASSOC);
-                    $_SESSION['AccountIMG'] = $row['AccountIMG'];
-                    $_SESSION['MainColor'] = $row['MainColor'];
-                    $_SESSION['SecondColor'] = $row['SecondColor'];
-                    header('Location: main.php');
-                }
-                else {
-                    foreach($login_result[1] as $report){
-                        echo "- $report" . "<br>";
-                    }
-                }
-            }
-        ?>
         <div id="entry_container">
             <div id="about" class="box">
                 <span class="title">What is OnTime?</span>
@@ -122,22 +93,27 @@
         </div>
     </body>
     <script>
+        //Events for the identification flag (individual or company) and the register button.
         var flag = GetByID('flag');
         var registerButton =GetByID("registerButton");
         var individual = GetByID('individual');
         var company = GetByID('company');
         registerButton.onclick = function() {
+            //If the register button is clicked we show the flag.
             flag.style.display = "flex";
         }
         window.onclick = function(event) {
+            //If the user clicks outside of the flag we hide it.
             if (event.target == flag) {
                 flag.style.display = "none";
             }
         }
         individual.onclick = function(){
+            //The user identifies as an individual.
             window.location.href = "register.php?mode=individual";
         }
         company.onclick = function(){
+            //The user identifies as a company.
             window.location.href = "register.php?mode=company";
         }
     </script>
