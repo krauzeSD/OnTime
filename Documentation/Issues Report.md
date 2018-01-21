@@ -1,4 +1,4 @@
-19/12/2017
+
 ## MySQL Issue: Constraints
 
 We designed some constraints but, they didn't work. According to information taken from StackOverflow and other
@@ -12,4 +12,5 @@ will be done in the PHP scripts that we will use in our backend.
 To facilitate the communication with the database, we schematised various procedures. The problem we found was related to 
 the core of MySQL: how the if/else structure is formed, how we need to specify a delimiter after each block and other problems.
 Because of this, we decided to use MySQL only to store our information.
+
 
